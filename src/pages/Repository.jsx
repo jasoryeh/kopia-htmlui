@@ -175,14 +175,13 @@ export class Repository extends Component {
                             </Form.Group>
                         </Row>
                     </> : <>
-                        <Row>
+                        <Row className="mb-2">
                             <Form.Group as={Col}>
                                 <Form.Label>{i18n.t('repository.attribute.config.file')}:</Form.Label>
                                 <Form.Control readOnly defaultValue={this.state.status.configFile} />
                             </Form.Group>
                         </Row>
-                        <br />
-                        <Row>
+                        <Row className="mb-2">
                             <Form.Group as={Col}>
                                 <Form.Label>{i18n.t('repository.attribute.provider')}:</Form.Label>
                                 <Form.Control readOnly defaultValue={this.state.status.storage} />
@@ -200,8 +199,7 @@ export class Repository extends Component {
                                 <Form.Control readOnly defaultValue={this.state.status.splitter} />
                             </Form.Group>
                         </Row>
-                        <br />
-                        <Row>
+                        <Row className="mb-2">
                             <Form.Group as={Col}>
                                 <Form.Label>{i18n.t('repository.attribute.format')}:</Form.Label>
                                 <Form.Control readOnly defaultValue={this.state.status.formatVersion} />
@@ -220,15 +218,13 @@ export class Repository extends Component {
                             </Form.Group>
                         </Row>
                     </>}
-                    <br />
-                    <Row>
+                    <Row className="mb-2">
                         <Form.Group as={Col}>
                             <Form.Label>{i18n.t('repository.attribute.connected.as')}:</Form.Label>
                             <Form.Control readOnly defaultValue={this.state.status.username + "@" + this.state.status.hostname} />
                         </Form.Group>
                     </Row>
-                    <br />
-                    <Row>
+                    <Row className="mb-2">
                         <Col>
                             <Button data-testid='disconnect' size="sm" variant="danger" onClick={this.disconnect}>{i18n.t('repository.event.connection.disconnect')}</Button>
                         </Col>
