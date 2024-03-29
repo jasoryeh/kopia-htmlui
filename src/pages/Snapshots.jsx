@@ -317,7 +317,7 @@ export class Snapshots extends Component {
                         </Dropdown>
                     </Col></>}
                     <Col xs="auto">
-                        <Button data-testid="new-snapshot" size="sm" variant="primary" onClick={() => this.navigateTo("/snapshots/new")}>{i18n.t('snapshot.event.snapshot.new')}</Button>
+                        <Button data-testid="new-snapshot" size="sm" variant="success" onClick={() => this.navigateTo("/snapshots/new")}>{i18n.t('snapshot.event.snapshot.new')}</Button>
                     </Col>
                     <Col>
                     </Col>
