@@ -308,9 +308,9 @@ export class SetupRepository extends Component {
         }
 
         return <Form onSubmit={this.verifyStorage}>
-            {!this.state.provider.startsWith("_") && <h3>{i18n.t('feedback.repository.configuration')}</h3>}
-            {this.state.provider === "_token" && <h3>{i18n.t('feedback.repository.repository-token-enter')}</h3>}
-            {this.state.provider === "_server" && <h3>{i18n.t('feedback.repository.kopia-server-parameters')}</h3>}
+            <h3>{i18n.t(supportedProviders.find(x => x.provider == this.state.provider).description)}</h3>
+            <h6><b>{i18n.t('feedback.repository.configure-title')}</b></h6>
+            <h6>{i18n.t('feedback.repository.configure-description')}</h6>
 
             <SelectedProvider ref={this.optionsEditor} initial={this.state.providerSettings} />
 
@@ -384,7 +384,6 @@ export class SetupRepository extends Component {
                             </Form.Control>
                         </Form.Group>
                     </Row>
-                    <br/>
                     <Row>
                         <Form.Group as={Col}>
                             <Form.Label className="required">{i18n.t('repository.attribute.format')}</Form.Label>
@@ -431,7 +430,6 @@ export class SetupRepository extends Component {
                             {i18n.t('feedback.repository.eec-warning')} <a href="https://kopia.io/docs/advanced/ecc/" target="_blank" rel="noreferrer">{i18n.t('common.click-here-to-learn-more')}.</a>
                         </Col>
                     </Row>
-                    <br/>
                     {this.overrideUsernameHostnameRow()}
                     <Row style={{ marginTop: "1rem" }}>
                         <Form.Group as={Col}>
@@ -440,7 +438,6 @@ export class SetupRepository extends Component {
                     </Row>
                 </div>
             </Collapse>
-            <br/>
             {this.connectionErrorInfo()}
             <hr />
             <Button data-testid='back-button' variant="warning" onClick={() => this.setState({ providerSettings: {}, storageVerified: false })}>{i18n.t('common.back')}</Button>
@@ -478,16 +475,13 @@ export class SetupRepository extends Component {
                     <Form.Text className="text-muted">{i18n.t('feedback.repository.override-hint')}</Form.Text>
                 </Form.Group>
             </Row>
-            <br/>
             <Row>
                 {(this.state.provider !== "_token" && this.state.provider !== "_server") && RequiredField(this, i18n.t('feedback.validation.required.password-repository'), "password", { autoFocus: true, type: "password", placeholder: i18n.t('feedback.validation.required.password-repository-hint') }, i18n.t('feedback.validation.required.password-repository-help'))}
                 {this.state.provider === "_server" && RequiredField(this, i18n.t('feedback.validation.required.server-password'), "password", { autoFocus: true, type: "password", placeholder: i18n.t('feedback.validation.required.server-password-hint') })}
             </Row>
-            <br/>
             <Row>
                 {RequiredField(this, i18n.t('feedback.repository.repository-description'), "description", { autoFocus: this.state.provider === "_token", placeholder: i18n.t('feedback.repository.repository-description-hint') }, i18n.t('feedback.repository.repository-description-help') )}
             </Row>
-            <br/>
             {this.toggleAdvancedButton()}
             <Collapse in={this.state.showAdvanced}>
                 <div id="advanced-options-div" className="advancedOptions">
