@@ -285,7 +285,7 @@ export function taskStatusSymbol(task) {
             return <p title={dur}><FontAwesomeIcon icon={faExclamationCircle} color="red" /> {i18n.t('feedback.task.failed-after')} {dur}</p>;
 
         case "CANCELED":
-            return <p title={dur}><FontAwesomeIcon icon={faBan} /> {i18n.t('feedback.task.canceled-after')} {dur}</p>;
+            return <p title={dur}><FontAwesomeIcon icon={faBan} color="grey" /> {i18n.t('feedback.task.canceled-after')} {dur}</p>;
 
         default:
             return st;
