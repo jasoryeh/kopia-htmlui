@@ -329,7 +329,7 @@ export class SetupRepository extends Component {
         const icon = this.state.showAdvanced ? faAngleDoubleUp : faAngleDoubleDown;
         const text = this.state.showAdvanced ? i18n.t('event.repository.advanced-options-hide') : i18n.t('event.repository.advanced-options.show');
 
-        return <Button data-testid='advanced-options' onClick={this.toggleAdvanced}
+        return <Button data-testid='advanced-options' className="mt-2" onClick={this.toggleAdvanced}
             variant="primary"
             aria-controls="advanced-options-div"
             aria-expanded={this.state.showAdvanced}
@@ -477,13 +477,14 @@ export class SetupRepository extends Component {
             </Row>
             <Row>
                 {(this.state.provider !== "_token" && this.state.provider !== "_server") && RequiredField(this, i18n.t('feedback.validation.required.password-repository'), "password", { autoFocus: true, type: "password", placeholder: i18n.t('feedback.validation.required.password-repository-hint') }, i18n.t('feedback.validation.required.password-repository-help'))}
+                <br/>
                 {this.state.provider === "_server" && RequiredField(this, i18n.t('feedback.validation.required.server-password'), "password", { autoFocus: true, type: "password", placeholder: i18n.t('feedback.validation.required.server-password-hint') })}
             </Row>
             <Row>
                 {RequiredField(this, i18n.t('feedback.repository.repository-description'), "description", { autoFocus: this.state.provider === "_token", placeholder: i18n.t('feedback.repository.repository-description-hint') }, i18n.t('feedback.repository.repository-description-help') )}
             </Row>
             {this.toggleAdvancedButton()}
-            <Collapse in={this.state.showAdvanced}>
+            <Collapse className="m-2" in={this.state.showAdvanced}>
                 <div id="advanced-options-div" className="advancedOptions">
                     <Row>
                         {RequiredBoolean(this, i18n.t('feedback.repository.connect-in-read-only-mode'), "readonly", i18n.t('feedback.repository.connect-in-read-only-mode-hint'))}
