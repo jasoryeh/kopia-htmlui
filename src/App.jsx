@@ -127,14 +127,24 @@ export default class App extends Component {
                 <Nav>
                   <LanguageSelection />
                 </Nav>
+                <Nav>
+                  <NavLink to="/repo" className="nav-link" style={{textAlign: "right"}}>
+                    <p className="mb-0 text-sm"
+                       style={{
+                         fontSize: "40%",
+                       }}>{this.state.isRepositoryConnected ? "Connected Repository" : "Repository Disconnected"}</p>
+                    <h5 className="mb-0 fw-light text-sm"
+                        style={{
+                          color: "#7a7a7a",
+                          fontSize: "60%",
+                        }}
+                    ><i>{this.state.isRepositoryConnected ? this.state.repoDescription : "Please connect to a repository first!"}</i></h5>
+                  </NavLink>
+                </Nav>
               </Navbar.Collapse>
             </Navbar>
 
             <Container fluid>
-              <NavLink to="/repo" style={{ color: "inherit", textDecoration: "inherit" }}>
-                <h5 className="mb-4">{this.state.repoDescription}</h5>
-              </NavLink>
-
               <Switch>
                 <Route path="/snapshots/new" component={SnapshotCreate} />
                 <Route path="/snapshots/single-source/" component={SnapshotHistory} />
