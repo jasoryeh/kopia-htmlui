@@ -12,6 +12,7 @@ import Row from 'react-bootstrap/Row';
 import KopiaTable from '../utils/KopiaTable';
 import { Link } from 'react-router-dom';
 import { redirect, taskStatusSymbol } from '../utils/uiutil';
+import {faEye} from "@fortawesome/free-regular-svg-icons/faEye";
 import { useTranslation } from "react-i18next";
 import { useState, useLayoutEffect, useCallback } from 'react';
 
@@ -90,24 +91,29 @@ export function Tasks() {
         return <p>{t('task.loading')}</p>;
     }
 
-    const columns = [{
+    const columns = [
+    {
         Header: t('task.header.time.start'),
         width: 160,
-        accessor: x => <Link to={'/tasks/' + x.id} title={moment(x.startTime).toLocaleString()}>
-            {moment(x.startTime).fromNow()}
-        </Link>
+        accessor: x => <small>{moment(x.startTime).fromNow()}</small>
     }, {
         Header: t('task.header.status'),
-        width: 240,
-        accessor: x => taskStatusSymbol(x),
+            width: 240,
+                accessor: x => <small>{taskStatusSymbol(x)}</small>,
     }, {
         Header: t('task.header.kind'),
         width: "",
-        accessor: x => <p>{x.kind}</p>,
+        accessor: x => <small>{x.kind}</small>,
     }, {
         Header: t('task.header.description'),
         width: "",
-        accessor: x => <p>{x.description}</p>,
+        accessor: x => <small>{x.description}</small>,
+    }, {
+        Header: "View",
+        width: 50,
+        accessor: x => <Link to={'/tasks/' + x.id} title={moment(x.startTime).toLocaleString()}>
+            <FontAwesomeIcon icon={faEye} />
+        </Link>
     }]
 
     const filteredItems = filterItems(response.items)
@@ -122,8 +128,10 @@ export function Tasks() {
                                 <Dropdown.Menu>
                                     <Dropdown.Item onClick={() => setStatus("All")}>{t('task.all')}</Dropdown.Item>
                                     <Dropdown.Divider />
+                                    <Dropdown.Item onClick={() => setStatus("Success")}>{t('task.success')}</Dropdown.Item>
                                     <Dropdown.Item onClick={() => setStatus("Running")}>{t('task.running')}</Dropdown.Item>
                                     <Dropdown.Item onClick={() => setStatus("Failed")}>{t('task.failed')}</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => setStatus("Canceled")}>{t('task.canceled')}</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
                         </Col>
