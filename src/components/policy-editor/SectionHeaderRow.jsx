@@ -8,7 +8,13 @@ import i18n from '../../utils/i18n';
 export function SectionHeaderRow() {
     return <Row>
         <LabelColumn />
-        <ValueColumn><div className="policyEditorHeader">{i18n.t('feedback.header.defined')}</div></ValueColumn>
-        <EffectiveValueColumn><div className="policyEditorHeader">{i18n.t('feedback.header.effective')}</div></EffectiveValueColumn>
+        <ValueColumn>
+            <div className="policyEditorHeader">{i18n.t('feedback.header.defined')}</div>
+            <hr className="mt-1" />
+        </ValueColumn>
+        <EffectiveValueColumn>
+            <div className="policyEditorHeader">{i18n.t('feedback.header.effective')}</div>
+            <hr className="mt-1"/>
+        </EffectiveValueColumn>
     </Row>;
 }
