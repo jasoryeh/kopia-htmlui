@@ -10,9 +10,13 @@ export function Policy({ location, history }) {
     const editorRef = useRef();
 
     return <>
+        <GoBackButton onClick={this.props.history.goBack} />
         <h4>
-        <GoBackButton onClick={history.goBack} />
-        {' '}{PolicyTypeName(source)}</h4>
+            Editing a Policy
+        </h4>
+        <p>
+            {PolicyTypeName(source)}
+        </p>
         <PolicyEditor ref={editorRef} userName={userName} host={host} path={path} close={history.goBack} />
         <br/>
         <Row>
