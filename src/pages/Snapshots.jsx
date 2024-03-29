@@ -194,19 +194,20 @@ export class Snapshots extends Component {
     nextSnapshotTimeCell(x, parent) {
         if (!x.cell.value) {
             if (x.row.original.status === "PAUSED") {
-                return "paused";
+                return <Badge bg="warning">{i18n.t('feedback.snapshot.status.paused')}</Badge>;
             }
-            return "";
+
+            return <Badge bg="dark">{i18n.t('feedback.snapshot.status.not-available')}</Badge>;
         }
 
         if (x.row.original.status === "UPLOADING") {
-            return "";
+            return <Badge bg="secondary">{i18n.t('feedback.snapshot.status.uploading')}</Badge>;
         }
 
         return <p title={moment(x.cell.value).toLocaleString()}>{moment(x.cell.value).fromNow()}
             {moment(x.cell.value).isBefore(moment()) && <>
                 &nbsp;
-                <Badge bg="secondary">{i18n.t('feedback.snapshot.status.overdue')}</Badge>
+                <Badge bg="danger">{i18n.t('feedback.snapshot.status.overdue')}</Badge>
             </>}
         </p>;
     }
