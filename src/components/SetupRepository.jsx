@@ -308,7 +308,7 @@ export class SetupRepository extends Component {
         }
 
         return <Form onSubmit={this.verifyStorage}>
-            <h3>{i18n.t(supportedProviders.find(x => x.provider == this.state.provider).description)}</h3>
+            <h3>{i18n.t(supportedProviders.find(x => x.provider === this.state.provider).description)}</h3>
             <h6><b>{i18n.t('feedback.repository.configure-title')}</b></h6>
             <h6>{i18n.t('feedback.repository.configure-description')}</h6>
 
