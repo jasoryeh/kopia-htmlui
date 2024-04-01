@@ -141,7 +141,7 @@ export function Tasks() {
                                 <Dropdown.Menu>
                                     <Dropdown.Item onClick={() => setKind("All")}>{t('task.all')}</Dropdown.Item>
                                     <Dropdown.Divider style={{
-                                        display: this.state.uniqueKinds.length > 0 ? "" : "none"
+                                        display: response.kinds.length > 0 ? "" : "none"
                                     }}/>
                                     {response.kinds.map(kind => <Dropdown.Item key={kind} onClick={() => setKind(kind)}>{kind}</Dropdown.Item>)}
                                 </Dropdown.Menu>
